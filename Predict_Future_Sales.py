@@ -53,11 +53,8 @@ def featuresetsExtraction_step( tsts_df, trn_df):
     LR = LinearRegression()
     LR.fit(x_train,y_train)
     print('\n', 'Mean Square Error(trainSet):', mean_squared_error(y_train, LR.predict(x_train)), '\n', 'Mean Square Error(testSet):', mean_squared_error(y_test, LR.predict(x_test)), '\n','\n', 'SCORE(testSet):', LR.score(x_train,y_train))
-#     print('Test set mse:', mean_squared_error(y_test, LR.predict(x_test)))
-#     print('Test set score:', LR.score(x_train,y_train))
-    submission=pd.DataFrame({'shop_id':main_dataFrame['shop_id'],
-                       'score: ':LR.score(x_train,y_train)}) 
-    submission.to_csv('PredictFutureSales.csv', index=False) 
+    submission = pd.read_csv('/kaggle/input/competitive-data-science-predict-future-sales/sample_submission.csv') 
+    submission.to_csv('PredictFutureSales.csv', index=False)  
 featuresetsExtraction_step(df_test,df_train )
 
 
